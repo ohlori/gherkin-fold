@@ -4,7 +4,8 @@
   <img src="https://raw.githubusercontent.com/ohlori/gherkin-fold/main/images/logo.png" alt="Gherkin Fold logo" width="128">
 </p>
 
-View all scenarios in a glance. Gherkin Fold collapses scenarios in `.feature` files while keeping the feature structure visible.
+View all scenarios at a glance. Gherkin Fold adds scenario folding controls to
+`.feature` files while keeping the feature structure visible.
 
 ## Install
 
@@ -14,10 +15,12 @@ View all scenarios in a glance. Gherkin Fold collapses scenarios in `.feature` f
 3. Select the extension published by **ohlori**.
 4. Select **Install**, then open a `.feature` file.
 
-## How it works
+## Optional automatic folding
 
-When a `.feature` file first becomes active, Gherkin Fold collapses every
-foldable:
+Automatic folding is off by default. To enable it, open Cursor Settings, search
+for `gherkinFold.collapseOnOpen`, and turn it on.
+
+When enabled, Gherkin Fold collapses every foldable:
 
 - `Scenario`
 - `Scenario Outline`
@@ -26,9 +29,9 @@ foldable:
 `Feature`, `Rule`, and `Background` sections remain open, giving you an overview
 of the file without all the scenario steps taking up the screen.
 
-Automatic folding happens only once during the lifetime of an open document.
-Anything you expand stays expanded while you edit or switch tabs. Closing and
-reopening the file starts a new document session and applies the default again.
+Automatic folding happens only once during the lifetime of an open document, so
+anything you expand stays expanded while you edit or switch tabs. Closing and
+reopening the file starts a new document session.
 
 ## Expand or collapse all scenarios
 
@@ -64,11 +67,10 @@ both command IDs to your existing `cursor.general.pinnedTitleActions` array:
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| `gherkinFold.collapseOnOpen` | `true` | Collapses scenarios the first time an open `.feature` document becomes active. |
+| `gherkinFold.collapseOnOpen` | `false` | When enabled, collapses scenarios the first time an open `.feature` document becomes active. |
 
-To turn off automatic collapsing, open Cursor Settings, search for
-`gherkinFold.collapseOnOpen`, and disable it. The toolbar buttons and Command
-Palette actions remain available.
+The toolbar buttons and Command Palette actions remain available whether this
+setting is enabled or disabled.
 
 ## Supported Gherkin
 

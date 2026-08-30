@@ -27,6 +27,13 @@ interface ExtensionManifest {
     readonly menus: {
       readonly 'editor/title': MenuContribution[];
     };
+    readonly configuration: {
+      readonly properties: {
+        readonly 'gherkinFold.collapseOnOpen': {
+          readonly default: boolean;
+        };
+      };
+    };
   };
 }
 
@@ -39,6 +46,10 @@ describe('extension manifest', () => {
     assert.match(manifest.description.toLowerCase(), /gherkin fold/);
     assert.ok(manifest.keywords.includes('gherkin fold'));
     assert.ok(manifest.keywords.includes('scenario folding'));
+    assert.equal(
+      manifest.contributes.configuration.properties['gherkinFold.collapseOnOpen'].default,
+      false,
+    );
   });
 
   it('contributes expand and collapse buttons to .feature editor titles', () => {

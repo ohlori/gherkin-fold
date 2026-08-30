@@ -10,7 +10,7 @@ export function activate(context: vscode.ExtensionContext): void {
     getActiveEditor: () => vscode.window.activeTextEditor,
     collapseOnOpen: (document) => vscode.workspace
       .getConfiguration('gherkinFold', document.uri)
-      .get<boolean>('collapseOnOpen', true),
+      .get<boolean>('collapseOnOpen', false),
     getFoldingRanges: async (document) => vscode.commands.executeCommand<vscode.FoldingRange[]>(
       'vscode.executeFoldingRangeProvider',
       document.uri,

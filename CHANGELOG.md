@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Make automatic collapse-on-open opt-in and disabled by default.
+
 ## 1.0.1
 
 - Replace development documentation with a Cursor-focused usage guide.

@@ -219,6 +219,20 @@ describe('GherkinFoldController', () => {
     ]);
   });
 
+  it('keeps manual actions available when automatic folding is disabled', async () => {
+    const host = new TestHost();
+    const controller = new GherkinFoldController(host);
+    const editor = createEditor(createDocument());
+    host.activeEditor = editor;
+    host.autoFoldEnabled = false;
+
+    await controller.onActiveEditorChanged(editor);
+    await controller.collapse(editor);
+
+    assert.equal(host.rangeRequests, 1);
+    assert.deepEqual(host.actions.map(({ command }) => command), ['editor.fold']);
+  });
+
   it('ignores non-feature files and respects disabled automatic folding', async () => {
     const host = new TestHost();
     const controller = new GherkinFoldController(host);
