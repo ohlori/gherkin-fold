@@ -2,8 +2,8 @@
   "name": "gherkin-fold",
   "displayName": "Gherkin Fold",
   "icon": "images/logo.png",
-  "description": "Gherkin Fold adds scenario folding controls with optional collapse-on-open behavior for Cursor .feature files.",
-  "version": "1.0.2",
+  "description": "View all scenarios in a glance.",
+  "version": "1.0.3",
   "publisher": "ohlori",
   "license": "MIT",
   "repository": {

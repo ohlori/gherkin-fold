@@ -43,7 +43,7 @@ describe('extension manifest', () => {
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as ExtensionManifest;
 
     assert.equal(manifest.displayName, 'Gherkin Fold');
-    assert.match(manifest.description.toLowerCase(), /gherkin fold/);
+    assert.equal(manifest.description, 'View all scenarios in a glance.');
     assert.ok(manifest.keywords.includes('gherkin fold'));
     assert.ok(manifest.keywords.includes('scenario folding'));
     assert.equal(

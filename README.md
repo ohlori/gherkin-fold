@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/ohlori/gherkin-fold/main/images/logo.png" alt="Gherkin Fold logo" width="128">
 </p>
 
-View all scenarios at a glance. Gherkin Fold adds scenario folding controls to
+View all scenarios in a glance. Gherkin Fold adds scenario folding controls to
 `.feature` files while keeping the feature structure visible.
 
 ## Install
