@@ -1,0 +1,110 @@
+{
+  "name": "gherkin-fold",
+  "displayName": "Gherkin Fold",
+  "icon": "images/logo.png",
+  "description": "Automatically collapse Scenario and Scenario Outline blocks when .feature files open.",
+  "version": "1.0.0",
+  "publisher": "ohlori",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ohlori/gherkin-fold.git"
+  },
+  "homepage": "https://github.com/ohlori/gherkin-fold#readme",
+  "bugs": {
+    "url": "https://github.com/ohlori/gherkin-fold/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "cucumber",
+    "feature",
+    "folding",
+    "gherkin",
+    "scenario"
+  ],
+  "activationEvents": [
+    "onLanguage:feature"
+  ],
+  "main": "./dist/src/extension.js",
+  "contributes": {
+    "configurationDefaults": {
+      "cursor.general.pinnedTitleActions": [
+        "gherkinFold.foldScenarios",
+        "gherkinFold.expandScenarios"
+      ]
+    },
+    "commands": [
+      {
+        "command": "gherkinFold.foldScenarios",
+        "title": "Collapse All Scenarios",
+        "category": "Gherkin Fold",
+        "icon": "$(collapse-all)",
+        "enablement": "resourceExtname == .feature"
+      },
+      {
+        "command": "gherkinFold.expandScenarios",
+        "title": "Expand All Scenarios",
+        "category": "Gherkin Fold",
+        "icon": "$(expand-all)",
+        "enablement": "resourceExtname == .feature"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "gherkinFold.foldScenarios",
+          "when": "resourceExtname == .feature",
+          "group": "navigation@1"
+        },
+        {
+          "command": "gherkinFold.expandScenarios",
+          "when": "resourceExtname == .feature",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Gherkin Fold",
+      "properties": {
+        "gherkinFold.collapseOnOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "View all scenarios in a glance"
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "feature",
+        "aliases": [
+          "Gherkin",
+          "Cucumber",
+          "feature"
+        ],
+        "extensions": [
+          ".feature"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "pretest": "npm run compile",
+    "test": "node --test dist/test/*.test.js",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.130",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.9.2",
+    "typescript": "^7.0.2"
+  }
+}
