@@ -4,9 +4,7 @@
   <img src="https://raw.githubusercontent.com/ohlori/gherkin-fold/main/images/logo.png" alt="Gherkin Fold logo" width="128">
 </p>
 
-Gherkin Fold keeps long Gherkin `.feature` files easy to scan in Cursor. It
-automatically collapses scenarios while leaving the surrounding feature
-structure visible.
+View all scenarios in a glance. Gherkin Fold collapses scenarios in `.feature` files while keeping the feature structure visible.
 
 ## Install
 
