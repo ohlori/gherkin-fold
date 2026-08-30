@@ -16,6 +16,9 @@ interface MenuContribution {
 }
 
 interface ExtensionManifest {
+  readonly displayName: string;
+  readonly description: string;
+  readonly keywords: string[];
   readonly contributes: {
     readonly configurationDefaults: {
       readonly 'cursor.general.pinnedTitleActions': string[];
@@ -28,6 +31,16 @@ interface ExtensionManifest {
 }
 
 describe('extension manifest', () => {
+  it('includes user-facing Marketplace search metadata', () => {
+    const manifestPath = path.resolve(__dirname, '../../package.json');
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as ExtensionManifest;
+
+    assert.equal(manifest.displayName, 'Gherkin Fold');
+    assert.match(manifest.description.toLowerCase(), /gherkin fold/);
+    assert.ok(manifest.keywords.includes('gherkin fold'));
+    assert.ok(manifest.keywords.includes('scenario folding'));
+  });
+
   it('contributes expand and collapse buttons to .feature editor titles', () => {
     const manifestPath = path.resolve(__dirname, '../../package.json');
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as ExtensionManifest;

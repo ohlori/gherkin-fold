@@ -1,52 +1,59 @@
 # Gherkin Fold
 
 <p align="center">
-  <img src="images/logo.png" alt="Gherkin Fold logo" width="128">
+  <img src="https://raw.githubusercontent.com/ohlori/gherkin-fold/main/images/logo.png" alt="Gherkin Fold logo" width="128">
 </p>
 
-Gherkin Fold keeps large `.feature` files easy to scan by collapsing every
-`Scenario`, `Scenario Outline`, and `Scenario Template` by default. `Feature`,
-`Rule`, and `Background` sections stay open so the file structure remains
-visible.
+Gherkin Fold keeps long Gherkin `.feature` files easy to scan in Cursor. It
+automatically collapses scenarios while leaving the surrounding feature
+structure visible.
 
-Automatic folding runs once per open document. After that, scenarios you
-expand stay expanded while you edit or switch tabs. Closing and reopening the
-file starts a new document session and reapplies the default.
+## Install
 
-## Features
+1. Open **Extensions** in Cursor (`Cmd+Shift+X` on macOS or `Ctrl+Shift+X` on
+   Windows and Linux).
+2. Search for **Gherkin Fold**.
+3. Select the extension published by **ohlori**.
+4. Select **Install**, then open a `.feature` file.
 
-- Collapses all foldable scenarios when a `.feature` file first becomes active.
-- Preserves manual expand/collapse changes for the rest of that document session.
-- Adds **Collapse All Scenarios** and **Expand All Scenarios** toolbar buttons.
-- Provides the same actions through the Command Palette.
-- Leaves `Feature`, `Rule`, and `Background` folds unchanged.
+## How it works
 
-## Installation
+When a `.feature` file first becomes active, Gherkin Fold collapses every
+foldable:
 
-To install a packaged build in VS Code or Cursor:
+- `Scenario`
+- `Scenario Outline`
+- `Scenario Template`
 
-1. Run **Extensions: Install from VSIX...** from the Command Palette.
-2. Select `gherkin-fold-<version>.vsix`.
-3. Reload the editor if prompted, then open a `.feature` file.
+`Feature`, `Rule`, and `Background` sections remain open, giving you an overview
+of the file without all the scenario steps taking up the screen.
 
-To create the VSIX yourself, see [Build a VSIX](#build-a-vsix).
+Automatic folding happens only once during the lifetime of an open document.
+Anything you expand stays expanded while you edit or switch tabs. Closing and
+reopening the file starts a new document session and applies the default again.
 
-## Usage
+## Expand or collapse all scenarios
 
-Open a `.feature` file and its scenarios collapse automatically. Use either of
-these commands whenever you want to change all scenario folds explicitly:
+Use the buttons in the editor title bar to change every scenario at once:
 
 - **Gherkin Fold: Collapse All Scenarios**
 - **Gherkin Fold: Expand All Scenarios**
 
-Both commands appear in the editor title bar while a `.feature` file is active.
-Cursor pins them by default when `cursor.general.pinnedTitleActions` has not
-already been customized.
+The same actions are available from the Command Palette (`Cmd+Shift+P` on macOS
+or `Ctrl+Shift+P` on Windows and Linux). These commands affect scenarios only;
+they do not change `Feature`, `Rule`, or `Background` folds.
 
-If the buttons are hidden, open the editor title `...` menu, select
-**Configure Icon Visibility**, and enable **Collapse All Scenarios** and
-**Expand All Scenarios**. If you manage pinned title actions in `settings.json`,
-append these command IDs to your existing array:
+### If the toolbar buttons are hidden
+
+The buttons appear only while a `.feature` file is active. If they are still
+hidden:
+
+1. Open the `...` menu in the editor title bar.
+2. Select **Configure Icon Visibility**.
+3. Enable **Collapse All Scenarios** and **Expand All Scenarios**.
+
+If you manage Cursor's pinned title actions directly in `settings.json`, add
+both command IDs to your existing `cursor.general.pinnedTitleActions` array:
 
 ```json
 "cursor.general.pinnedTitleActions": [
@@ -59,38 +66,30 @@ append these command IDs to your existing array:
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| `gherkinFold.collapseOnOpen` | `true` | Automatically collapses scenarios once when a `.feature` document is opened. |
+| `gherkinFold.collapseOnOpen` | `true` | Collapses scenarios the first time an open `.feature` document becomes active. |
 
-The setting can be configured globally, per workspace, or specifically for the
-Gherkin language.
+To turn off automatic collapsing, open Cursor Settings, search for
+`gherkinFold.collapseOnOpen`, and disable it. The toolbar buttons and Command
+Palette actions remain available.
 
 ## Supported Gherkin
 
-The current release recognizes the English `Scenario`, `Scenario Outline`, and
-`Scenario Template` keywords. Other Gherkin dialects are left unchanged.
+Gherkin Fold currently recognizes the English `Scenario`, `Scenario Outline`,
+and `Scenario Template` keywords. Other Gherkin dialects are left unchanged.
 
-## Development
+## Troubleshooting
 
-```sh
-npm ci
-npm run compile
-npm test
-```
+- **A scenario does not collapse:** It must contain enough content for Cursor to
+  create a folding range.
+- **The file did not collapse again after switching tabs:** This is intentional.
+  Automatic folding runs once per open document so your manual changes are
+  preserved. Use **Collapse All Scenarios** when you want to fold everything
+  again.
+- **Nothing collapses automatically:** Confirm that
+  `gherkinFold.collapseOnOpen` is enabled and that the active file ends in
+  `.feature`.
 
-Press `F5` in VS Code or Cursor to launch an Extension Development Host, then
-open a `.feature` file to exercise the extension. Run `npm run watch` while
-developing to compile TypeScript after each change.
-
-## Build a VSIX
-
-```sh
-npm ci
-npm test
-npm run package
-```
-
-The package script compiles the extension and creates
-`gherkin-fold-<version>.vsix` in the project root.
+Found a problem? [Open an issue](https://github.com/ohlori/gherkin-fold/issues).
 
 ## License
 

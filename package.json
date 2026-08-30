@@ -2,8 +2,8 @@
   "name": "gherkin-fold",
   "displayName": "Gherkin Fold",
   "icon": "images/logo.png",
-  "description": "Automatically collapse Scenario and Scenario Outline blocks when .feature files open.",
-  "version": "1.0.0",
+  "description": "View all scenarios in a glance.",
+  "version": "1.0.1",
   "publisher": "ohlori",
   "license": "MIT",
   "repository": {
@@ -22,10 +22,17 @@
   ],
   "keywords": [
     "cucumber",
+    "cucumber folding",
     "feature",
+    "feature file",
     "folding",
     "gherkin",
-    "scenario"
+    "gherkin fold",
+    "gherkin folding",
+    "scenario",
+    "scenario fold",
+    "scenario folding",
+    "collapse scenarios"
   ],
   "activationEvents": [
     "onLanguage:feature"

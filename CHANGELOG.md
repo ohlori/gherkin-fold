@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+- Replace development documentation with a Cursor-focused usage guide.
+- Improve Marketplace discovery for Gherkin folding and scenario collapsing
+  searches.
+
 ## 1.0.0
 
 - Publish the first stable release of Gherkin Fold.
